@@ -1,3 +1,4 @@
+import os
 import cv2
 import dlib
 import time
@@ -13,6 +14,9 @@ def reshape_for_polyline(array):
 
 
 def main():
+    os.makedirs('original', exist_ok=True)
+    os.makedirs('landmarks', exist_ok=True)
+
     cap = cv2.VideoCapture(args.filename)
     fps = video.FPS().start()
 

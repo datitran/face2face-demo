@@ -1,0 +1,36 @@
+name: face2face-demo
+channels: !!python/tuple
+- menpo
+- defaults
+dependencies:
+- bzip2=1.0.6=3
+- jlaura::opencv3=3.0.0=py35_0
+- jpeg=9b=0
+- libpng=1.6.27=0
+- menpo::boost=1.59.0=py35_0
+- menpo::dlib=19.4=py35_0
+- menpo::tbb=4.3_20141023=0
+- mkl=2017.0.3=0
+- numpy=1.13.0=py35_0
+- openssl=1.0.2l=0
+- pip=9.0.1=py35_1
+- python=3.5.3=1
+- readline=6.2=2
+- setuptools=27.2.0=py35_0
+- sqlite=3.13.0=0
+- tk=8.5.18=0
+- wheel=0.29.0=py35_0
+- xz=5.2.2=1
+- zlib=1.2.8=3
+- pip:
+  - backports.weakref==1.0rc1
+  - bleach==1.5.0
+  - html5lib==0.9999999
+  - imutils==0.4.3
+  - markdown==2.6.8
+  - protobuf==3.3.0
+  - six==1.10.0
+  - tensorflow==1.2.1
+  - werkzeug==0.12.2
+prefix: /Users/datitran/anaconda/envs/face2face-demo
+

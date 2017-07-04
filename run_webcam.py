@@ -91,9 +91,13 @@ def main():
         image_rgb = cv2.cvtColor(combined_image, cv2.COLOR_BGR2RGB)  # OpenCV uses BGR instead of RGB
         generated_image = sess.run(output_tensor, feed_dict={image_tensor: image_rgb})
         image_bgr = cv2.cvtColor(np.squeeze(generated_image), cv2.COLOR_RGB2BGR)
-        output_image = np.concatenate([resize(frame_resize), image_bgr], axis=1)
+        image_normal = np.concatenate([resize(frame_resize), image_bgr], axis=1)
+        image_landmark = np.concatenate([resize(black_image), image_bgr], axis=1)
 
-        cv2.imshow('frame', output_image)
+        if args.display_landmark == 0:
+            cv2.imshow('frame', image_normal)
+        else:
+            cv2.imshow('frame', image_landmark)
 
         fps.update()
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -112,6 +116,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-src', '--source', dest='video_source', type=int,
                         default=0, help='Device index of the camera.')
+    parser.add_argument('--show', dest='display_landmark', type=int, default=0, choices=[0, 1],
+                        help='0 shows the normal input and 1 the facial landmark.')
     parser.add_argument('--landmark-model', dest='face_landmark_shape_file', type=str, help='Face landmark model file.')
     parser.add_argument('--tf-model', dest='frozen_model_file', type=str, help='Frozen TensorFlow model file.')
 

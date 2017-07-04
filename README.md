@@ -9,6 +9,9 @@ This is a pix2pix demo that learns from facial landmarks and translates this int
 ```
 # Clone this repo
 git clone git@github.com:datitran/face2face-demo.git
+
+# Create the conda environment from file (Mac OSX)
+conda env create -f environment.yml
 ```
 
 #### 2. Generate Training Data
@@ -21,11 +24,13 @@ Input:
 
 - `file` is the name of the video file from which you want to create the data set.
 - `num` is the number of train data to be created.
-- `landmark-model` is the facial landmark model that is used to detect the landmarks.
+- `landmark-model` is the facial landmark model that is used to detect the landmarks. A pre-trained facial landmark model is provided [here](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
 Output:
 
-Two folders `original` and `landmarks` will be created.
+- Two folders `original` and `landmarks` will be created.
+
+If you want to download my dataset, here is also the [video file](https://u7410512.dl.dropboxusercontent.com/u/7410512/face2face-demo/angela_merkel_speech.mp4) that I used and the generated [training dataset](https://u7410512.dl.dropboxusercontent.com/u/7410512/face2face-demo/dataset.zip) (400 images already split into training and validation).
 
 #### 3. Train Model
 
@@ -87,7 +92,7 @@ For more information around training, have a look at Christopher Hesse's [pix2pi
     
     Output:
     
-    It returns a reduced model with less weights file size than the original model.
+    - It returns a reduced model with less weights file size than the original model.
 
 2. Second, we freeze the reduced model to a single file.
     ```
@@ -100,31 +105,35 @@ For more information around training, have a look at Christopher Hesse's [pix2pi
     
     Output:
     
-    It returns a frozen model file `frozen_model.pb` in the model folder.
-
+    - It returns a frozen model file `frozen_model.pb` in the model folder.
+    
+I have uploaded a pre-trained frozen model [here](https://u7410512.dl.dropboxusercontent.com/u/7410512/face2face-demo/face2face_model_epoch_200.zip). This model is trained on 400 images with epoch 200.
+    
 #### 5. Run Demo
 
 ```
-python run_webcam.py --source 0 --landmark-model shape_predictor_68_face_landmarks.dat --tf-model face2face-reduced-model/frozen_model.pb
+python run_webcam.py --source 0 --show 0 --landmark-model shape_predictor_68_face_landmarks.dat --tf-model face2face-reduced-model/frozen_model.pb
 ```
 
 Input:
 
-- `source` is the device index of the camera.
+- `source` is the device index of the camera (default=0).
+- `show` is an option to either display the normal input (0) or the facial landmark (1) alongside the generated image (default=0).
 - `landmark-model` is the facial landmark model that is used to detect the landmarks.
 - `tf-model` is the frozen model file.
 
 Example:
 
-- Add example image here
+![example](example.gif)
 
 ## Requirements
 - [Anaconda / Python 3.5](https://www.continuum.io/downloads)
-- [TensorFlow 1.0](https://www.tensorflow.org/)
+- [TensorFlow 1.2](https://www.tensorflow.org/)
 - [OpenCV 3.0](http://opencv.org/)
+- [Dlib 19.4](http://dlib.net/)
 
 ## Acknowledgments
-Kudos to [Christopher Hesse](https://github.com/christopherhesse) for his amazing pix2pix Tensorflow implementation and [Gene Kogan](http://genekogan.com/) for his inspirational workshop. 
+Kudos to [Christopher Hesse](https://github.com/christopherhesse) for his amazing pix2pix TensorFlow implementation and [Gene Kogan](http://genekogan.com/) for his inspirational workshop. 
 
 ## Copyright
 

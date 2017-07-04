@@ -217,3 +217,4 @@ if __name__ == '__main__':
         # Export reduced model used for prediction
         saver = tf.train.Saver()
         saver.save(sess, '{}/reduced_model'.format(args.output_folder))
+        print("Model is exported to {}".format(checkpoint))
