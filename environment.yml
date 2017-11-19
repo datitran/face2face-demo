@@ -9,7 +9,7 @@ dependencies:
 - libpng=1.6.27=0
 - menpo::boost=1.59.0=py35_0
 - menpo::dlib=19.4=py35_0
-- menpo::tbb=4.3_20141023=0
+- conda-forge::tbb
 - mkl=2017.0.3=0
 - numpy=1.13.0=py35_0
 - openssl=1.0.2l=0
