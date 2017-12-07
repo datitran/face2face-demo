@@ -30,7 +30,7 @@ Output:
 
 - Two folders `original` and `landmarks` will be created.
 
-If you want to download my dataset, here is also the [video file](https://u7410512.dl.dropboxusercontent.com/u/7410512/face2face-demo/angela_merkel_speech.mp4) that I used and the generated [training dataset](https://u7410512.dl.dropboxusercontent.com/u/7410512/face2face-demo/dataset.zip) (400 images already split into training and validation).
+If you want to download my dataset, here is also the [video file](https://dl.dropboxusercontent.com/s/2g04onlkmkq9c69/angela_merkel_speech.mp4) that I used and the generated [training dataset](https://dl.dropboxusercontent.com/s/pfm8b0yogmum63w/dataset.zip) (400 images already split into training and validation).
 
 #### 3. Train Model
 
@@ -107,7 +107,7 @@ For more information around training, have a look at Christopher Hesse's [pix2pi
     
     - It returns a frozen model file `frozen_model.pb` in the model folder.
     
-I have uploaded a pre-trained frozen model [here](https://u7410512.dl.dropboxusercontent.com/u/7410512/face2face-demo/face2face_model_epoch_200.zip). This model is trained on 400 images with epoch 200.
+I have uploaded a pre-trained frozen model [here](https://dl.dropboxusercontent.com/s/rzfaoeb3e2ta343/face2face_model_epoch_200.zip). This model is trained on 400 images with epoch 200.
     
 #### 5. Run Demo
 
