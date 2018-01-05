@@ -4,7 +4,7 @@ channels: !!python/tuple
 - defaults
 dependencies:
 - bzip2=1.0.6=3
-- jlaura::opencv3=3.0.0=py35_0
+- menpo::opencv3=3.1.0=py35_0
 - jpeg=9b=0
 - libpng=1.6.27=0
 - menpo::boost=1.59.0=py35_0
