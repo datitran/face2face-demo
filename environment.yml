@@ -1,5 +1,5 @@
 name: face2face-demo
-channels: !!python/tuple
+channels:
 - menpo
 - defaults
 dependencies:
