@@ -31,8 +31,8 @@ def load_graph(frozen_graph_filename):
     """Load a (frozen) Tensorflow model into memory."""
     graph = tf.Graph()
     with graph.as_default():
-        od_graph_def = tf.GraphDef()
-        with tf.gfile.GFile(frozen_graph_filename, 'rb') as fid:
+        od_graph_def = tf.compat.v1.GraphDef() 
+        with tf.compat.v2.io.gfile.GFile(frozen_graph_filename, 'rb') as fid:
             serialized_graph = fid.read()
             od_graph_def.ParseFromString(serialized_graph)
             tf.import_graph_def(od_graph_def, name='')
@@ -44,7 +44,7 @@ def main():
     graph = load_graph(args.frozen_model_file)
     image_tensor = graph.get_tensor_by_name('image_tensor:0')
     output_tensor = graph.get_tensor_by_name('generate_output/output:0')
-    sess = tf.Session(graph=graph)
+    sess = tf.compat.v1.Session(graph=graph)
 
     # OpenCV
     cap = cv2.VideoCapture(args.video_source)
