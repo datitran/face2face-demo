@@ -62,7 +62,7 @@ def main():
         frame_2 = cv2.GaussianBlur(src= frame1 , ksize = (5,5) , sigmaX = 0)
 
         # combining the results of both the blurs 
-        frame = cv2.addWeighted(frame1 , 0.6 , frame_2 , 0.5 , 0)
+        frame = cv2.addWeighted(frame_1 , 0.6 , frame_2 , 0.5 , 0)
 
         frame_resize = cv2.resize(frame, None, fx=1 / DOWNSAMPLE_RATIO, fy=1 / DOWNSAMPLE_RATIO)
         gray = cv2.cvtColor(frame_resize, cv2.COLOR_BGR2GRAY)
