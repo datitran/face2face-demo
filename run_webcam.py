@@ -51,9 +51,19 @@ def main():
     fps = video.FPS().start()
 
     while True:
-        ret, frame = cap.read()
+        ret, frame1 = cap.read()
 
         # resize image and detect face
+
+        # removing noises from the extracted frame using median Blur 
+        frame_1 = cv2.medianBlur(frame1 , 5)
+
+        # amplifying the edges using gaussian blur 
+        frame_2 = cv2.GaussianBlur(src= frame1 , ksize = (5,5) , sigmaX = 0)
+
+        # combining the results of both the blurs 
+        frame = cv2.addWeighted(frame1 , 0.6 , frame_2 , 0.5 , 0)
+
         frame_resize = cv2.resize(frame, None, fx=1 / DOWNSAMPLE_RATIO, fy=1 / DOWNSAMPLE_RATIO)
         gray = cv2.cvtColor(frame_resize, cv2.COLOR_BGR2GRAY)
         faces = detector(gray, 1)
